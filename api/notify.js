@@ -41,9 +41,7 @@ if (!result.ok) {
   });
 }
 
-if (!result.ok) {
-return res.status(502).json({ error: "Telegram delivery failed" });
-}
+
 
 return res.status(200).json({ success: true });
 }
