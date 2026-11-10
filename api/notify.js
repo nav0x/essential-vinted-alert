@@ -34,14 +34,13 @@ text: message
 }
 );
 
-if (!result.ok) {
+const telegramData = await response.json();
+
+if (!response.ok || !telegramData.ok) {
   return res.status(502).json({
     error: "Telegram delivery failed",
-    details: result.description
+    details: telegramData.description
   });
 }
 
-
-
 return res.status(200).json({ success: true });
-}
