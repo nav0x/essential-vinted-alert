@@ -34,7 +34,12 @@ text: message
 }
 );
 
-const result = await response.json();
+if (!result.ok) {
+  return res.status(502).json({
+    error: "Telegram delivery failed",
+    details: result.description
+  });
+}
 
 if (!result.ok) {
 return res.status(502).json({ error: "Telegram delivery failed" });
